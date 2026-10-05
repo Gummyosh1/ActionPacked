@@ -4,8 +4,57 @@
 .logo,.footer-logo{display:inline-flex;align-items:center;gap:14px;transform:none;flex-shrink:0}
 .logo .brand-mark,.footer-logo .brand-mark{position:relative;display:block;width:68px;height:78px;overflow:hidden;flex:none}
 .brand-mark img{position:absolute;display:block;width:128px;height:128px;max-width:none;left:-28px;top:-28px}
-.logo .brand-wordmark,.footer-logo .brand-wordmark{display:block;color:var(--ink);font:900 italic 32px/.85 'Barlow Condensed',Impact,sans-serif;letter-spacing:-1px;transform:rotate(-4deg)}
+.logo .brand-wordmark,.footer-logo .brand-wordmark{display:none}
 .brand-wordmark>span{color:var(--red)}
 .footer-logo .brand-wordmark{font-size:27px}
 @media(max-width:700px){.logo,.footer-logo{gap:8px}.logo .brand-mark,.footer-logo .brand-mark{width:48px;height:58px}.brand-mark img{width:96px;height:96px;left:-23px;top:-22px}.logo .brand-wordmark,.footer-logo .brand-wordmark{font-size:25px}header{flex-wrap:wrap;gap:20px}header nav{flex-wrap:wrap}}
 @media(max-width:420px){header{justify-content:center}header nav{width:100%;justify-content:center}.navbutton{display:inline-block;font-size:13px;padding:8px 10px}}
+
+/* A quieter cover: comic character through ink, color, and halftone. */
+.topline{height:5px;padding:0;background:var(--red)}
+header{border-bottom:1px solid #19191726;padding-top:16px;padding-bottom:16px}
+nav{font-weight:600;gap:32px}
+.navbutton{background:transparent;box-shadow:none;border-width:1px;padding:12px 17px}
+.hero{background:var(--paper);grid-template-columns:1fr 1.05fr;align-items:center;gap:7%;padding-top:66px;padding-bottom:72px;border-bottom:0;position:relative}
+.hero-copy{min-width:0}
+.hero .eyebrow{font-size:11px;letter-spacing:2px;margin-bottom:25px}
+.hero .eyebrow:first-child:before{content:'';display:inline-block;width:22px;height:3px;background:var(--red);vertical-align:middle;margin-right:12px}
+.hero h1{font-size:clamp(64px,7.2vw,106px);letter-spacing:-1.5px;line-height:.96;font-weight:800;margin-bottom:24px}
+.hero h1 em{color:var(--red);font-style:normal;-webkit-text-stroke:0;text-shadow:none}
+.hero .intro{max-width:365px;color:#53534b;font-size:18px;font-weight:400;line-height:1.65;margin:0}
+.hero .actions{gap:26px;margin-top:30px}
+.hero .button{padding:15px 21px;box-shadow:3px 3px var(--ink);font-weight:700}
+.hero .textlink{font-weight:600;text-decoration:none;border-bottom:1px solid #19191765;padding:6px 0}
+.hero .bottomnote{margin:38px 0 0;font-size:10px;letter-spacing:1.6px;color:#66665c}
+.hero .art{width:100%;max-width:none;padding:0;background:none;isolation:isolate}
+.hero .art:before{content:'';position:absolute;inset:24px -18px -20px 26px;background-image:radial-gradient(#19191755 .8px,transparent .8px);background-size:5px 5px;z-index:-1}
+.hero .photo{transform:none;border:2px solid var(--ink);box-shadow:5px 5px var(--yellow)}
+.hero .photo img{height:380px;object-position:center}
+.hero .photo>div{display:flex;justify-content:space-between;gap:12px;border-top:2px solid;padding:16px 18px;font-size:10px;letter-spacing:1.3px;background:var(--paper)}
+.ticker{height:8px;padding:0;background:var(--yellow);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+@media(min-width:1500px){.hero{gap:80px}}
+@media(max-width:1000px){.hero{gap:40px}.hero .photo img{height:340px}.hero .actions{gap:20px}}
+@media(max-width:700px){header{justify-content:space-between;flex-wrap:nowrap;gap:16px}header nav{width:auto;gap:15px;flex-wrap:nowrap;font-size:13px}.navbutton{font-size:12px;padding:9px 11px}.hero{grid-template-columns:1fr;padding-top:40px;padding-bottom:46px;gap:36px}.hero h1{font-size:clamp(64px,14vw,88px)}.hero .eyebrow{margin-bottom:21px}.hero .intro{max-width:400px;font-size:17px}.hero .bottomnote{margin-top:28px}.hero .art{width:calc(100% - 12px);margin:0}.hero .photo img{height:300px}.hero .art:before{inset:18px -12px -14px 20px}.hero .photo>div{padding:13px 12px;font-size:9px}}
+@media(max-width:380px){header nav{gap:11px}.navbutton{padding:8px}.hero .actions{gap:18px}.hero .photo img{height:260px}}
+
+/* Store hours: a clean comic panel with a weekly schedule. */
+.store-hours{background:var(--ink);color:var(--paper);display:grid;grid-template-columns:1fr 1.25fr;gap:8%;align-items:center;padding-top:76px;padding-bottom:76px}
+.hours-copy .eyebrow{color:#d5d3c6;letter-spacing:1.8px}
+.hours-copy h2{font-size:clamp(64px,7vw,96px);line-height:.95;letter-spacing:-1px;margin:24px 0}
+.hours-copy h2 span{color:var(--yellow)}
+.hours-intro{max-width:260px;color:#d5d3c6;line-height:1.65;font-size:18px}
+.hours-link{display:inline-block;margin-top:16px;padding-bottom:7px;border-bottom:1px solid var(--yellow);font-size:15px;font-weight:600;color:var(--yellow)}
+.hours-panel{position:relative;background:var(--paper);color:var(--ink);border:2px solid var(--ink);box-shadow:7px 7px var(--red);min-width:0}
+.hours-panel-heading{display:flex;justify-content:space-between;gap:12px;background:var(--yellow);padding:19px 25px;border-bottom:2px solid var(--ink);font-size:10px;font-weight:800;letter-spacing:1.3px;background-image:radial-gradient(#19191718 .7px,transparent .7px);background-size:5px 5px}
+.hours-table{border-collapse:collapse;width:calc(100% - 48px);margin:8px 24px 0;font-size:17px}
+.hours-table th,.hours-table td{padding:15px 0;border-bottom:1px solid #19191726}
+.hours-table th{text-align:left;font-weight:600}
+.hours-table td{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hours-table tr:last-child th,.hours-table tr:last-child td{border-bottom:0}
+.hours-closed th{color:#68685e}
+.closed-label{color:#a62f21;background:#d1453310;border:1px solid #d1453330;padding:4px 10px;font-size:13px;font-weight:600}
+.hours-footnote{margin:4px 24px 0;padding:16px 0 18px;border-top:2px solid var(--ink);font-size:11px;color:#636358;line-height:1.5}
+@media(max-width:700px){.store-hours{grid-template-columns:1fr;gap:32px;padding-top:44px;padding-bottom:50px}.hours-copy h2{font-size:64px;margin:18px 0}.hours-copy h2 br{display:none}.hours-copy h2 span:before{content:' '}.hours-intro{max-width:100%;font-size:17px;margin-bottom:0}.hours-link{margin-top:18px}.hours-panel{margin-right:7px}.hours-panel-heading{padding:17px 18px;font-size:9px}.hours-table{width:calc(100% - 36px);margin:6px 18px 0;font-size:15px}.hours-table th,.hours-table td{padding:14px 0}.hours-footnote{margin-left:18px;margin-right:18px;font-size:10px}}
+
+/* Keep the storefront sign and ribbon cutting together in the frame. */
+.hero .photo img{height:auto;aspect-ratio:auto;object-fit:cover;object-position:center;}
