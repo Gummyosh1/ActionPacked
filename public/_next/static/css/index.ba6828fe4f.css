@@ -15,17 +15,17 @@
 header{border-bottom:1px solid #19191726;padding-top:16px;padding-bottom:16px}
 nav{font-weight:600;gap:32px}
 .navbutton{background:transparent;box-shadow:none;border-width:1px;padding:12px 17px}
-.hero{background:var(--paper);grid-template-columns:1fr 1.05fr;align-items:center;gap:7%;padding-top:66px;padding-bottom:72px;border-bottom:0;position:relative}
+.hero{background:var(--red);grid-template-columns:1fr 1.05fr;align-items:center;gap:7%;padding-top:66px;padding-bottom:72px;border-bottom:0;position:relative}
 .hero-copy{min-width:0}
 .hero .eyebrow{font-size:11px;letter-spacing:2px;margin-bottom:25px}
-.hero .eyebrow:first-child:before{content:'';display:inline-block;width:22px;height:3px;background:var(--red);vertical-align:middle;margin-right:12px}
+.hero .eyebrow:first-child:before{content:'';display:inline-block;width:22px;height:3px;background:var(--yellow);vertical-align:middle;margin-right:12px}
 .hero h1{font-size:clamp(64px,7.2vw,106px);letter-spacing:-1.5px;line-height:.96;font-weight:800;margin-bottom:24px}
-.hero h1 em{color:var(--red);font-style:normal;-webkit-text-stroke:0;text-shadow:none}
-.hero .intro{max-width:365px;color:#53534b;font-size:18px;font-weight:400;line-height:1.65;margin:0}
+.hero h1 em{color:var(--yellow);font-style:normal;-webkit-text-stroke:0;text-shadow:none}
+.hero .intro{max-width:365px;color:var(--ink);font-size:18px;font-weight:400;line-height:1.65;margin:0}
 .hero .actions{gap:26px;margin-top:30px}
 .hero .button{padding:15px 21px;box-shadow:3px 3px var(--ink);font-weight:700}
 .hero .textlink{font-weight:600;text-decoration:none;border-bottom:1px solid #19191765;padding:6px 0}
-.hero .bottomnote{margin:38px 0 0;font-size:10px;letter-spacing:1.6px;color:#66665c}
+.hero .bottomnote{margin:38px 0 0;font-size:10px;letter-spacing:1.6px;color:var(--ink)}
 .hero .art{width:100%;max-width:none;padding:0;background:none;isolation:isolate}
 .hero .art:before{content:'';position:absolute;inset:24px -18px -20px 26px;background-image:radial-gradient(#19191755 .8px,transparent .8px);background-size:5px 5px;z-index:-1}
 .hero .photo{transform:none;border:2px solid var(--ink);box-shadow:5px 5px var(--yellow)}
@@ -58,3 +58,9 @@ nav{font-weight:600;gap:32px}
 
 /* Keep the storefront sign and ribbon cutting together in the frame. */
 .hero .photo img{height:auto;aspect-ratio:auto;object-fit:cover;object-position:center;}
+
+/* Match the clean, bold section headings; retain the printed background. */
+.hero{background-image:radial-gradient(circle,#19191720 .85px,transparent 1px);background-size:6px 6px}
+.hero h1{color:var(--ink);font-size:clamp(56px,5.5vw,82px);font-weight:900;line-height:1;letter-spacing:-.7px;text-transform:uppercase;-webkit-text-stroke:0;text-shadow:none}
+.hero h1 em{color:var(--yellow);font-style:normal;-webkit-text-stroke:0;text-shadow:none}
+@media(max-width:700px){.hero h1{font-size:clamp(46px,10.5vw,70px)}}
