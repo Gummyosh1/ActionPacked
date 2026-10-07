@@ -1,10 +1,15 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 
-// node_modules/ical.js/dist/ical.js
+// worker.js
+var __defProp2 = Object.defineProperty;
+var __name2 = /* @__PURE__ */ __name((target, value) => __defProp2(target, "name", { value, configurable: true }), "__name");
 var Binary = class _Binary {
   static {
-    __name(this, "Binary");
+    __name(this, "_Binary");
+  }
+  static {
+    __name2(this, "Binary");
   }
   /**
    * Creates a binary value from the given string.
@@ -106,7 +111,10 @@ var DURATION_LETTERS = /([PDWHMTS]{1,1})/;
 var DATA_PROPS_TO_COPY = ["weeks", "days", "hours", "minutes", "seconds", "isNegative"];
 var Duration = class _Duration {
   static {
-    __name(this, "Duration");
+    __name(this, "_Duration");
+  }
+  static {
+    __name2(this, "Duration");
   }
   /**
    * Returns a new ICAL.Duration instance from the passed seconds value.
@@ -414,9 +422,13 @@ function parseDurationChunk(letter, number, object) {
   return 1;
 }
 __name(parseDurationChunk, "parseDurationChunk");
+__name2(parseDurationChunk, "parseDurationChunk");
 var Period = class _Period {
   static {
-    __name(this, "Period");
+    __name(this, "_Period");
+  }
+  static {
+    __name2(this, "Period");
   }
   /**
    * Creates a new {@link ICAL.Period} instance from the passed string.
@@ -475,6 +487,7 @@ var Period = class _Period {
       }
     }
     __name(fromDateOrDateTimeString, "fromDateOrDateTimeString");
+    __name2(fromDateOrDateTimeString, "fromDateOrDateTimeString");
     if (Duration.isValueString(aData[1])) {
       return _Period.fromData({
         start: fromDateOrDateTimeString(aData[0], aProp),
@@ -630,7 +643,10 @@ var Period = class _Period {
 };
 var Time = class _Time {
   static {
-    __name(this, "Time");
+    __name(this, "_Time");
+  }
+  static {
+    __name2(this, "Time");
   }
   static _dowCache = {};
   static _wnCache = {};
@@ -802,10 +818,10 @@ var Time = class _Time {
    * @param {timeInit} aData          Time initialization
    * @param {Timezone=} aZone         Timezone this position occurs in
    */
-  static fromData = /* @__PURE__ */ __name(function fromData(aData, aZone) {
+  static fromData = /* @__PURE__ */ __name2(/* @__PURE__ */ __name(function fromData(aData, aZone) {
     let t = new _Time();
     return t.fromData(aData, aZone);
-  }, "fromData");
+  }, "fromData"), "fromData");
   /**
    * Creates a new ICAL.Time instance from the current moment.
    * The instance is “floating” - has no timezone relation.
@@ -1778,6 +1794,7 @@ function parse(input) {
   return root.length == 1 ? root[0] : root;
 }
 __name(parse, "parse");
+__name2(parse, "parse");
 parse.property = function(str, designSet) {
   let state = {
     component: [[], []],
@@ -1792,6 +1809,9 @@ parse.component = function(str) {
 var ParserError = class extends Error {
   static {
     __name(this, "ParserError");
+  }
+  static {
+    __name2(this, "ParserError");
   }
   name = this.constructor.name;
 };
@@ -2080,7 +2100,10 @@ parse._eachLine = function(buffer, callback) {
 var OPTIONS = ["tzid", "location", "tznames", "latitude", "longitude"];
 var Timezone = class _Timezone {
   static {
-    __name(this, "Timezone");
+    __name(this, "_Timezone");
+  }
+  static {
+    __name2(this, "Timezone");
   }
   static _compare_change_fn(a, b) {
     if (a.year < b.year) return -1;
@@ -2408,6 +2431,7 @@ var Timezone = class _Timezone {
       return offset.factor * (offset.hours * 3600 + offset.minutes * 60);
     }
     __name(convert_tzoffset, "convert_tzoffset");
+    __name2(convert_tzoffset, "convert_tzoffset");
     function init_changes() {
       let changebase = {};
       changebase.is_daylight = aComponent.name == "daylight";
@@ -2420,6 +2444,7 @@ var Timezone = class _Timezone {
       return changebase;
     }
     __name(init_changes, "init_changes");
+    __name2(init_changes, "init_changes");
     if (!aComponent.hasProperty("rrule") && !aComponent.hasProperty("rdate")) {
       change = init_changes();
       change.year = dtstart.year;
@@ -2500,14 +2525,14 @@ var TimezoneService = {
     }
     return Object.keys(zones).length;
   },
-  reset: /* @__PURE__ */ __name(function() {
+  reset: /* @__PURE__ */ __name2(function() {
     zones = /* @__PURE__ */ Object.create(null);
     let utc = Timezone.utcTimezone;
     zones.Z = utc;
     zones.UTC = utc;
     zones.GMT = utc;
   }, "reset"),
-  _hard_reset: /* @__PURE__ */ __name(function() {
+  _hard_reset: /* @__PURE__ */ __name2(function() {
     zones = null;
   }, "_hard_reset"),
   /**
@@ -2516,7 +2541,7 @@ var TimezoneService = {
    * @param {String} tzid     Timezone identifier (e.g. America/Los_Angeles)
    * @return {Boolean}        False, when not present
    */
-  has: /* @__PURE__ */ __name(function(tzid) {
+  has: /* @__PURE__ */ __name2(function(tzid) {
     if (zones === null) {
       return false;
     }
@@ -2528,7 +2553,7 @@ var TimezoneService = {
    * @param {String} tzid               Timezone identifier (e.g. America/Los_Angeles)
    * @return {Timezone | undefined}     The timezone, or undefined if not found
    */
-  get: /* @__PURE__ */ __name(function(tzid) {
+  get: /* @__PURE__ */ __name2(function(tzid) {
     if (zones === null) {
       this.reset();
     }
@@ -2544,7 +2569,7 @@ var TimezoneService = {
    *        The name of the timezone. Defaults to the component's TZID if not
    *        passed.
    */
-  register: /* @__PURE__ */ __name(function(timezone, name) {
+  register: /* @__PURE__ */ __name2(function(timezone, name) {
     if (zones === null) {
       this.reset();
     }
@@ -2576,7 +2601,7 @@ var TimezoneService = {
    * @param {String} tzid     Timezone identifier (e.g. America/Los_Angeles)
    * @return {?Timezone}      The removed timezone, or null if not registered
    */
-  remove: /* @__PURE__ */ __name(function(tzid) {
+  remove: /* @__PURE__ */ __name2(function(tzid) {
     if (zones === null) {
       return null;
     }
@@ -2619,10 +2644,12 @@ function updateTimezones(vcal) {
   return vcal;
 }
 __name(updateTimezones, "updateTimezones");
+__name2(updateTimezones, "updateTimezones");
 function isStrictlyNaN(number) {
   return typeof number === "number" && isNaN(number);
 }
 __name(isStrictlyNaN, "isStrictlyNaN");
+__name2(isStrictlyNaN, "isStrictlyNaN");
 function strictParseInt(string) {
   let result = parseInt(string, 10);
   if (isStrictlyNaN(result)) {
@@ -2633,6 +2660,7 @@ function strictParseInt(string) {
   return result;
 }
 __name(strictParseInt, "strictParseInt");
+__name2(strictParseInt, "strictParseInt");
 function formatClassType(data, type) {
   if (typeof data === "undefined") {
     return void 0;
@@ -2643,6 +2671,7 @@ function formatClassType(data, type) {
   return new type(data);
 }
 __name(formatClassType, "formatClassType");
+__name2(formatClassType, "formatClassType");
 function unescapedIndexOf(buffer, search, pos) {
   while ((pos = buffer.indexOf(search, pos)) !== -1) {
     if (pos > 0 && buffer[pos - 1] === "\\") {
@@ -2654,6 +2683,7 @@ function unescapedIndexOf(buffer, search, pos) {
   return -1;
 }
 __name(unescapedIndexOf, "unescapedIndexOf");
+__name2(unescapedIndexOf, "unescapedIndexOf");
 function binsearchInsert(list, seekVal, cmpfunc) {
   if (!list.length)
     return 0;
@@ -2676,6 +2706,7 @@ function binsearchInsert(list, seekVal, cmpfunc) {
     return mid;
 }
 __name(binsearchInsert, "binsearchInsert");
+__name2(binsearchInsert, "binsearchInsert");
 function clone(aSrc, aDeep) {
   if (!aSrc || typeof aSrc != "object") {
     return aSrc;
@@ -2702,6 +2733,7 @@ function clone(aSrc, aDeep) {
   }
 }
 __name(clone, "clone");
+__name2(clone, "clone");
 function foldline(aLine) {
   let result = "";
   let line = aLine || "", pos = 0, line_length = 0;
@@ -2722,6 +2754,7 @@ function foldline(aLine) {
   return result.slice(ICALmodule.newLineChar.length + 1);
 }
 __name(foldline, "foldline");
+__name2(foldline, "foldline");
 function pad2(data) {
   if (typeof data !== "string") {
     if (typeof data === "number") {
@@ -2740,10 +2773,12 @@ function pad2(data) {
   }
 }
 __name(pad2, "pad2");
+__name2(pad2, "pad2");
 function trunc(number) {
   return number < 0 ? Math.ceil(number) : Math.floor(number);
 }
 __name(trunc, "trunc");
+__name2(trunc, "trunc");
 function extend(source, target) {
   for (let key in source) {
     let descr = Object.getOwnPropertyDescriptor(source, key);
@@ -2754,6 +2789,7 @@ function extend(source, target) {
   return target;
 }
 __name(extend, "extend");
+__name2(extend, "extend");
 var helpers = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   binsearchInsert,
@@ -2770,7 +2806,10 @@ var helpers = /* @__PURE__ */ Object.freeze({
 });
 var UtcOffset = class _UtcOffset {
   static {
-    __name(this, "UtcOffset");
+    __name(this, "_UtcOffset");
+  }
+  static {
+    __name2(this, "UtcOffset");
   }
   /**
    * Creates a new {@link ICAL.UtcOffset} instance from the passed string.
@@ -2919,7 +2958,10 @@ var UtcOffset = class _UtcOffset {
 };
 var VCardTime = class _VCardTime extends Time {
   static {
-    __name(this, "VCardTime");
+    __name(this, "_VCardTime");
+  }
+  static {
+    __name2(this, "VCardTime");
   }
   /**
    * Returns a new ICAL.VCardTime instance from a date and/or time string.
@@ -2933,6 +2975,7 @@ var VCardTime = class _VCardTime extends Time {
       return v ? strictParseInt(v.slice(s, s + e)) : null;
     }
     __name(part, "part");
+    __name2(part, "part");
     let parts = aValue.split("T");
     let dt = parts[0], tmz = parts[1];
     let splitzone = tmz ? design.vcard.value.time._splitZone(tmz) : [];
@@ -3056,7 +3099,10 @@ var VCardTime = class _VCardTime extends Time {
 };
 var RecurIterator = class _RecurIterator {
   static {
-    __name(this, "RecurIterator");
+    __name(this, "_RecurIterator");
+  }
+  static {
+    __name2(this, "RecurIterator");
   }
   static _indexMap = {
     "BYSECOND": 0,
@@ -3536,6 +3582,7 @@ var RecurIterator = class _RecurIterator {
       }
     }
     __name(initMonth, "initMonth");
+    __name2(initMonth, "initMonth");
     function nextMonth() {
       lastDay = 0;
       self.increment_month();
@@ -3543,6 +3590,7 @@ var RecurIterator = class _RecurIterator {
       initMonth();
     }
     __name(nextMonth, "nextMonth");
+    __name2(nextMonth, "nextMonth");
     initMonth();
     if (isInit) {
       lastDay -= 1;
@@ -4157,6 +4205,9 @@ var InvalidRecurrenceRuleError = class extends Error {
   static {
     __name(this, "InvalidRecurrenceRuleError");
   }
+  static {
+    __name2(this, "InvalidRecurrenceRuleError");
+  }
   constructor() {
     super("Recurrence rule has no valid occurrences");
   }
@@ -4184,7 +4235,10 @@ var ALLOWED_FREQ = [
 ];
 var Recur = class _Recur {
   static {
-    __name(this, "Recur");
+    __name(this, "_Recur");
+  }
+  static {
+    __name2(this, "Recur");
   }
   /**
    * Creates a new {@link ICAL.Recur} instance from the passed string.
@@ -4593,8 +4647,9 @@ function parseNumericValue(type, min, max, value) {
   return result;
 }
 __name(parseNumericValue, "parseNumericValue");
+__name2(parseNumericValue, "parseNumericValue");
 var optionDesign = {
-  FREQ: /* @__PURE__ */ __name(function(value, dict, fmtIcal) {
+  FREQ: /* @__PURE__ */ __name2(function(value, dict, fmtIcal) {
     if (ALLOWED_FREQ.indexOf(value) !== -1) {
       dict.freq = value;
     } else {
@@ -4603,16 +4658,16 @@ var optionDesign = {
       );
     }
   }, "FREQ"),
-  COUNT: /* @__PURE__ */ __name(function(value, dict, fmtIcal) {
+  COUNT: /* @__PURE__ */ __name2(function(value, dict, fmtIcal) {
     dict.count = strictParseInt(value);
   }, "COUNT"),
-  INTERVAL: /* @__PURE__ */ __name(function(value, dict, fmtIcal) {
+  INTERVAL: /* @__PURE__ */ __name2(function(value, dict, fmtIcal) {
     dict.interval = strictParseInt(value);
     if (dict.interval < 1) {
       dict.interval = 1;
     }
   }, "INTERVAL"),
-  UNTIL: /* @__PURE__ */ __name(function(value, dict, fmtIcal) {
+  UNTIL: /* @__PURE__ */ __name2(function(value, dict, fmtIcal) {
     if (value.length > 10) {
       dict.until = design.icalendar.value["date-time"].fromICAL(value);
     } else {
@@ -4622,7 +4677,7 @@ var optionDesign = {
       dict.until = Time.fromString(dict.until);
     }
   }, "UNTIL"),
-  WKST: /* @__PURE__ */ __name(function(value, dict, fmtIcal) {
+  WKST: /* @__PURE__ */ __name2(function(value, dict, fmtIcal) {
     if (VALID_DAY_NAMES.test(value)) {
       dict.wkst = Recur.icalDayToNumericDay(value);
     } else {
@@ -4634,7 +4689,7 @@ var partDesign = {
   BYSECOND: parseNumericValue.bind(void 0, "BYSECOND", 0, 60),
   BYMINUTE: parseNumericValue.bind(void 0, "BYMINUTE", 0, 59),
   BYHOUR: parseNumericValue.bind(void 0, "BYHOUR", 0, 23),
-  BYDAY: /* @__PURE__ */ __name(function(value) {
+  BYDAY: /* @__PURE__ */ __name2(function(value) {
     if (VALID_BYDAY_PART.test(value)) {
       return value;
     } else {
@@ -4654,10 +4709,10 @@ var TO_VCARD_NEWLINE = /\\|,|\n/g;
 function createTextType(fromNewline, toNewline) {
   let result = {
     matches: /.*/,
-    fromICAL: /* @__PURE__ */ __name(function(aValue, structuredEscape) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue, structuredEscape) {
       return replaceNewline(aValue, fromNewline, structuredEscape);
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue, structuredEscape) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue, structuredEscape) {
       let regEx = toNewline;
       if (structuredEscape)
         regEx = new RegExp(regEx.source + "|" + structuredEscape, regEx.flags);
@@ -4681,6 +4736,7 @@ function createTextType(fromNewline, toNewline) {
   return result;
 }
 __name(createTextType, "createTextType");
+__name2(createTextType, "createTextType");
 var DEFAULT_TYPE_TEXT = { defaultType: "text" };
 var DEFAULT_TYPE_TEXT_MULTI = { defaultType: "text", multiValue: "," };
 var DEFAULT_TYPE_TEXT_STRUCTURED = { defaultType: "text", structuredValue: ";" };
@@ -4708,6 +4764,7 @@ function replaceNewlineReplace(string) {
   }
 }
 __name(replaceNewlineReplace, "replaceNewlineReplace");
+__name2(replaceNewlineReplace, "replaceNewlineReplace");
 function replaceNewline(value, newline, structuredEscape) {
   if (value.indexOf("\\") === -1) {
     return value;
@@ -4717,6 +4774,7 @@ function replaceNewline(value, newline, structuredEscape) {
   return value.replace(newline, replaceNewlineReplace);
 }
 __name(replaceNewline, "replaceNewline");
+__name2(replaceNewline, "replaceNewline");
 var commonProperties = {
   "categories": DEFAULT_TYPE_TEXT_MULTI,
   "url": DEFAULT_TYPE_URI,
@@ -4726,7 +4784,7 @@ var commonProperties = {
 var commonValues = {
   "boolean": {
     values: ["TRUE", "FALSE"],
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       switch (aValue) {
         case "TRUE":
           return true;
@@ -4736,7 +4794,7 @@ var commonValues = {
           return false;
       }
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue) {
         return "TRUE";
       }
@@ -4745,48 +4803,48 @@ var commonValues = {
   },
   float: {
     matches: /^[+-]?\d+\.\d+$/,
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       let parsed = parseFloat(aValue);
       if (isStrictlyNaN(parsed)) {
         return 0;
       }
       return parsed;
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       return String(aValue);
     }, "toICAL")
   },
   integer: {
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       let parsed = parseInt(aValue);
       if (isStrictlyNaN(parsed)) {
         return 0;
       }
       return parsed;
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       return String(aValue);
     }, "toICAL")
   },
   "utc-offset": {
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue.length < 7) {
         return aValue.slice(0, 3) + aValue.slice(4, 6);
       } else {
         return aValue.slice(0, 3) + aValue.slice(4, 6) + aValue.slice(7, 9);
       }
     }, "toICAL"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue.length < 6) {
         return aValue.slice(0, 3) + ":" + aValue.slice(3, 5);
       } else {
         return aValue.slice(0, 3) + ":" + aValue.slice(3, 5) + ":" + aValue.slice(5, 7);
       }
     }, "fromICAL"),
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return UtcOffset.fromString(aValue);
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate")
   }
@@ -4907,10 +4965,10 @@ var icalValues = extend(commonValues, {
     /* ... */
   },
   "binary": {
-    decorate: /* @__PURE__ */ __name(function(aString) {
+    decorate: /* @__PURE__ */ __name2(function(aString) {
       return Binary.fromString(aString);
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aBinary) {
+    undecorate: /* @__PURE__ */ __name2(function(aBinary) {
       return aBinary.toString();
     }, "undecorate")
   },
@@ -4918,7 +4976,7 @@ var icalValues = extend(commonValues, {
     // needs to be an uri
   },
   "date": {
-    decorate: /* @__PURE__ */ __name(function(aValue, aProp) {
+    decorate: /* @__PURE__ */ __name2(function(aValue, aProp) {
       if (design.strict) {
         return Time.fromDateString(aValue, aProp);
       } else {
@@ -4928,17 +4986,17 @@ var icalValues = extend(commonValues, {
     /**
      * undecorates a time object.
      */
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (!design.strict && aValue.length >= 15) {
         return icalValues["date-time"].fromICAL(aValue);
       } else {
         return aValue.slice(0, 4) + "-" + aValue.slice(4, 6) + "-" + aValue.slice(6, 8);
       }
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       let len = aValue.length;
       if (len == 10) {
         return aValue.slice(0, 4) + aValue.slice(5, 7) + aValue.slice(8, 10);
@@ -4950,7 +5008,7 @@ var icalValues = extend(commonValues, {
     }, "toICAL")
   },
   "date-time": {
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (!design.strict && aValue.length == 8) {
         return icalValues.date.fromICAL(aValue);
       } else {
@@ -4961,7 +5019,7 @@ var icalValues = extend(commonValues, {
         return result;
       }
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       let len = aValue.length;
       if (len == 10 && !design.strict) {
         return icalValues.date.toICAL(aValue);
@@ -4978,27 +5036,27 @@ var icalValues = extend(commonValues, {
         return aValue;
       }
     }, "toICAL"),
-    decorate: /* @__PURE__ */ __name(function(aValue, aProp) {
+    decorate: /* @__PURE__ */ __name2(function(aValue, aProp) {
       if (design.strict) {
         return Time.fromDateTimeString(aValue, aProp);
       } else {
         return Time.fromString(aValue, aProp);
       }
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate")
   },
   duration: {
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return Duration.fromString(aValue);
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate")
   },
   period: {
-    fromICAL: /* @__PURE__ */ __name(function(string) {
+    fromICAL: /* @__PURE__ */ __name2(function(string) {
       let parts = string.split("/");
       parts[0] = icalValues["date-time"].fromICAL(parts[0]);
       if (!Duration.isValueString(parts[1])) {
@@ -5006,7 +5064,7 @@ var icalValues = extend(commonValues, {
       }
       return parts;
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(parts) {
+    toICAL: /* @__PURE__ */ __name2(function(parts) {
       parts = parts.slice();
       if (!design.strict && parts[0].length == 10) {
         parts[0] = icalValues.date.toICAL(parts[0]);
@@ -5022,18 +5080,18 @@ var icalValues = extend(commonValues, {
       }
       return parts.join("/");
     }, "toICAL"),
-    decorate: /* @__PURE__ */ __name(function(aValue, aProp) {
+    decorate: /* @__PURE__ */ __name2(function(aValue, aProp) {
       return Period.fromJSON(aValue, aProp, !design.strict);
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toJSON();
     }, "undecorate")
   },
   recur: {
-    fromICAL: /* @__PURE__ */ __name(function(string) {
+    fromICAL: /* @__PURE__ */ __name2(function(string) {
       return Recur._stringToData(string, true);
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(data) {
+    toICAL: /* @__PURE__ */ __name2(function(data) {
       let str = "";
       for (let [k, val] of Object.entries(data)) {
         if (k == "until") {
@@ -5053,15 +5111,15 @@ var icalValues = extend(commonValues, {
       }
       return str.slice(0, Math.max(0, str.length - 1));
     }, "toICAL"),
-    decorate: /* @__PURE__ */ __name(function decorate(aValue) {
+    decorate: /* @__PURE__ */ __name2(/* @__PURE__ */ __name(function decorate(aValue) {
       return Recur.fromData(aValue);
-    }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aRecur) {
+    }, "decorate"), "decorate"),
+    undecorate: /* @__PURE__ */ __name2(function(aRecur) {
       return aRecur.toJSON();
     }, "undecorate")
   },
   time: {
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue.length < 6) {
         return aValue;
       }
@@ -5071,7 +5129,7 @@ var icalValues = extend(commonValues, {
       }
       return result;
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue.length < 8) {
         return aValue;
       }
@@ -5120,7 +5178,7 @@ var icalProperties = extend(commonProperties, {
     defaultType: "date-time",
     allowedTypes: ["date-time", "date", "period"],
     multiValue: ",",
-    detectType: /* @__PURE__ */ __name(function(string) {
+    detectType: /* @__PURE__ */ __name2(function(string) {
       if (string.indexOf("/") !== -1) {
         return "period";
       }
@@ -5146,13 +5204,13 @@ var vcardValues = extend(commonValues, {
   text: createTextType(FROM_VCARD_NEWLINE, TO_VCARD_NEWLINE),
   uri: createTextType(FROM_VCARD_NEWLINE, TO_VCARD_NEWLINE),
   date: {
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return VCardTime.fromDateAndOrTimeString(aValue, "date");
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue.length == 8) {
         return icalValues.date.fromICAL(aValue);
       } else if (aValue[0] == "-" && aValue.length == 6) {
@@ -5161,7 +5219,7 @@ var vcardValues = extend(commonValues, {
         return aValue;
       }
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       if (aValue.length == 10) {
         return icalValues.date.toICAL(aValue);
       } else if (aValue[0] == "-" && aValue.length == 7) {
@@ -5172,13 +5230,13 @@ var vcardValues = extend(commonValues, {
     }, "toICAL")
   },
   time: {
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return VCardTime.fromDateAndOrTimeString("T" + aValue, "time");
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       let splitzone = vcardValues.time._splitZone(aValue, true);
       let zone = splitzone[0], value = splitzone[1];
       if (value.length == 6) {
@@ -5193,7 +5251,7 @@ var vcardValues = extend(commonValues, {
       }
       return value + zone;
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       let splitzone = vcardValues.time._splitZone(aValue);
       let zone = splitzone[0], value = splitzone[1];
       if (value.length == 8) {
@@ -5208,7 +5266,7 @@ var vcardValues = extend(commonValues, {
       }
       return value + zone;
     }, "toICAL"),
-    _splitZone: /* @__PURE__ */ __name(function(aValue, isFromIcal) {
+    _splitZone: /* @__PURE__ */ __name2(function(aValue, isFromIcal) {
       let lastChar = aValue.length - 1;
       let signChar = aValue.length - (isFromIcal ? 5 : 6);
       let sign = aValue[signChar];
@@ -5227,31 +5285,31 @@ var vcardValues = extend(commonValues, {
     }, "_splitZone")
   },
   "date-time": {
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return VCardTime.fromDateAndOrTimeString(aValue, "date-time");
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       return vcardValues["date-and-or-time"].fromICAL(aValue);
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       return vcardValues["date-and-or-time"].toICAL(aValue);
     }, "toICAL")
   },
   "date-and-or-time": {
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return VCardTime.fromDateAndOrTimeString(aValue, "date-and-or-time");
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       let parts = aValue.split("T");
       return (parts[0] ? vcardValues.date.fromICAL(parts[0]) : "") + (parts[1] ? "T" + vcardValues.time.fromICAL(parts[1]) : "");
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       let parts = aValue.split("T");
       return vcardValues.date.toICAL(parts[0]) + (parts[1] ? "T" + vcardValues.time.toICAL(parts[1]) : "");
     }, "toICAL")
@@ -5262,12 +5320,12 @@ var vcardValues = extend(commonValues, {
     // Could go with a more strict regex here
   },
   "phone-number": {
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       return Array.from(aValue).filter(function(c) {
         return c === "\\" ? void 0 : c;
       }).join("");
     }, "fromICAL"),
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       return Array.from(aValue).map(function(c) {
         return c === "," || c === ";" ? "\\" + c : c;
       }).join("");
@@ -5342,16 +5400,16 @@ var vcard3Values = extend(commonValues, {
   time: icalValues.time,
   vcard: icalValues.text,
   "utc-offset": {
-    toICAL: /* @__PURE__ */ __name(function(aValue) {
+    toICAL: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.slice(0, 7);
     }, "toICAL"),
-    fromICAL: /* @__PURE__ */ __name(function(aValue) {
+    fromICAL: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.slice(0, 7);
     }, "fromICAL"),
-    decorate: /* @__PURE__ */ __name(function(aValue) {
+    decorate: /* @__PURE__ */ __name2(function(aValue) {
       return UtcOffset.fromString(aValue);
     }, "decorate"),
-    undecorate: /* @__PURE__ */ __name(function(aValue) {
+    undecorate: /* @__PURE__ */ __name2(function(aValue) {
       return aValue.toString();
     }, "undecorate")
   }
@@ -5389,7 +5447,7 @@ var vcard3Properties = extend(commonProperties, {
   bday: {
     defaultType: "date-time",
     allowedTypes: ["date-time", "date"],
-    detectType: /* @__PURE__ */ __name(function(string) {
+    detectType: /* @__PURE__ */ __name2(function(string) {
       return string.indexOf("T") === -1 ? "date" : "date-time";
     }, "detectType")
   },
@@ -5410,7 +5468,7 @@ var vcard3Properties = extend(commonProperties, {
   rev: {
     defaultType: "date-time",
     allowedTypes: ["date-time", "date"],
-    detectType: /* @__PURE__ */ __name(function(string) {
+    detectType: /* @__PURE__ */ __name2(function(string) {
       return string.indexOf("T") === -1 ? "date" : "date-time";
     }, "detectType")
   },
@@ -5508,7 +5566,7 @@ var design = {
    * @param {String} componentName        The name of the component
    * @return {designSet}      The design set for the component
    */
-  getDesignSet: /* @__PURE__ */ __name(function(componentName) {
+  getDesignSet: /* @__PURE__ */ __name2(function(componentName) {
     let isInDesign = componentName && componentName in design.components;
     return isInDesign ? design.components[componentName] : design.defaultSet;
   }, "getDesignSet")
@@ -5529,6 +5587,7 @@ function stringify(jCal) {
   return result;
 }
 __name(stringify, "stringify");
+__name2(stringify, "stringify");
 stringify.component = function(component, designSet) {
   let name = component[0].toUpperCase();
   let result = "BEGIN:" + name + LINE_ENDING;
@@ -5690,7 +5749,10 @@ var TYPE_INDEX = 2;
 var VALUE_INDEX = 3;
 var Property = class _Property {
   static {
-    __name(this, "Property");
+    __name(this, "_Property");
+  }
+  static {
+    __name2(this, "Property");
   }
   /**
    * Create an {@link ICAL.Property} by parsing the passed iCalendar string.
@@ -6030,7 +6092,10 @@ var PROPERTY_NAME_INDEX = 0;
 var PROPERTY_VALUE_INDEX = 3;
 var Component = class _Component {
   static {
-    __name(this, "Component");
+    __name(this, "_Component");
+  }
+  static {
+    __name2(this, "Component");
   }
   /**
    * Create an {@link ICAL.Component} by parsing the passed iCalendar string.
@@ -6519,6 +6584,9 @@ var RecurExpansion = class {
   static {
     __name(this, "RecurExpansion");
   }
+  static {
+    __name2(this, "RecurExpansion");
+  }
   /**
    * Creates a new ICAL.RecurExpansion instance.
    *
@@ -6712,6 +6780,7 @@ var RecurExpansion = class {
       return item.toJSON();
     }
     __name(toJSON, "toJSON");
+    __name2(toJSON, "toJSON");
     let result = /* @__PURE__ */ Object.create(null);
     result.ruleIterators = this.ruleIterators.map(toJSON);
     if (this.ruleDates) {
@@ -6853,7 +6922,10 @@ var RecurExpansion = class {
 };
 var Event = class _Event {
   static {
-    __name(this, "Event");
+    __name(this, "_Event");
+  }
+  static {
+    __name2(this, "Event");
   }
   /**
    * Creates a new ICAL.Event instance.
@@ -7289,9 +7361,13 @@ function compareRangeException(a, b) {
   return 0;
 }
 __name(compareRangeException, "compareRangeException");
+__name2(compareRangeException, "compareRangeException");
 var ComponentParser = class {
   static {
     __name(this, "ComponentParser");
+  }
+  static {
+    __name2(this, "ComponentParser");
   }
   /**
    * Creates a new ICAL.ComponentParser instance.
@@ -7327,7 +7403,7 @@ var ComponentParser = class {
    */
   oncomplete = (
     /* c8 ignore next */
-    /* @__PURE__ */ __name(function() {
+    /* @__PURE__ */ __name2(function() {
     }, "oncomplete")
   );
   /**
@@ -7338,7 +7414,7 @@ var ComponentParser = class {
    */
   onerror = (
     /* c8 ignore next */
-    /* @__PURE__ */ __name(function(err) {
+    /* @__PURE__ */ __name2(function(err) {
     }, "onerror")
   );
   /**
@@ -7349,7 +7425,7 @@ var ComponentParser = class {
    */
   ontimezone = (
     /* c8 ignore next */
-    /* @__PURE__ */ __name(function(component) {
+    /* @__PURE__ */ __name2(function(component) {
     }, "ontimezone")
   );
   /**
@@ -7360,7 +7436,7 @@ var ComponentParser = class {
    */
   onevent = (
     /* c8 ignore next */
-    /* @__PURE__ */ __name(function(component) {
+    /* @__PURE__ */ __name2(function(component) {
     }, "onevent")
   );
   /**
@@ -7444,11 +7520,9 @@ var ICALmodule = {
   design,
   helpers
 };
-
-// calendar/feed.mjs
 var DEFAULT_CALENDAR_ID = "6ec8ba2cf2b01abd89647b5f89771cc44a278d3ff919e1ccd08ca9db2d01d9e7@group.calendar.google.com";
 var TIME_ZONE = "America/New_York";
-var publicFeedUrl = /* @__PURE__ */ __name((id) => `https://calendar.google.com/calendar/ical/${encodeURIComponent(id)}/public/basic.ics`, "publicFeedUrl");
+var publicFeedUrl = /* @__PURE__ */ __name2((id) => `https://calendar.google.com/calendar/ical/${encodeURIComponent(id)}/public/basic.ics`, "publicFeedUrl");
 function parseCalendar(source, month) {
   if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) throw new Error("Invalid month");
   const [year, m] = month.split("-").map(Number);
@@ -7473,6 +7547,7 @@ function parseCalendar(source, month) {
     return new Date(value).toISOString();
   }
   __name(timestamp, "timestamp");
+  __name2(timestamp, "timestamp");
   function add(event, start, end, key) {
     if (["CANCELLED"].includes(event.component.getFirstPropertyValue("status")) || event.component.getFirstPropertyValue("class") === "PRIVATE" || event.component.getFirstPropertyValue("class") === "CONFIDENTIAL") return;
     const from = timestamp(start), to = timestamp(end);
@@ -7481,6 +7556,7 @@ function parseCalendar(source, month) {
     result.set(key, { id: key, title: String(event.summary).slice(0, 300), description: String(event.description || "").slice(0, 6e3), location: String(event.location || "").slice(0, 500), start: from, end: to, allDay: start.isDate });
   }
   __name(add, "add");
+  __name2(add, "add");
   for (const event of events.filter((e) => !e.isRecurrenceException())) {
     if (!event.startDate || event.component.getFirstPropertyValue("status") === "CANCELLED") continue;
     const exceptions = events.filter((e) => e.isRecurrenceException() && e.uid === event.uid);
@@ -7500,6 +7576,7 @@ function parseCalendar(source, month) {
   return [...result.values()].sort((a, b) => a.start.localeCompare(b.start));
 }
 __name(parseCalendar, "parseCalendar");
+__name2(parseCalendar, "parseCalendar");
 async function calendarResponse(request, env = {}, fetcher = fetch) {
   const url = new URL(request.url);
   if (request.method !== "GET") return Response.json({ error: "Method not allowed" }, { status: 405, headers: { Allow: "GET" } });
@@ -7516,8 +7593,7 @@ async function calendarResponse(request, env = {}, fetcher = fetch) {
   }
 }
 __name(calendarResponse, "calendarResponse");
-
-// calendar/worker.mjs
+__name2(calendarResponse, "calendarResponse");
 var worker_default = {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -7533,7 +7609,186 @@ var worker_default = {
     return response;
   }
 };
+
+// ../../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
+var drainBody = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
+  try {
+    return await middlewareCtx.next(request, env);
+  } finally {
+    try {
+      if (request.body !== null && !request.bodyUsed) {
+        const reader = request.body.getReader();
+        while (!(await reader.read()).done) {
+        }
+      }
+    } catch (e) {
+      console.error("Failed to drain the unused request body.", e);
+    }
+  }
+}, "drainBody");
+var middleware_ensure_req_body_drained_default = drainBody;
+
+// ../../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts
+function reduceError(e) {
+  return {
+    name: e?.name,
+    message: e?.message ?? String(e),
+    stack: e?.stack,
+    cause: e?.cause === void 0 ? void 0 : reduceError(e.cause)
+  };
+}
+__name(reduceError, "reduceError");
+var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
+  try {
+    return await middlewareCtx.next(request, env);
+  } catch (e) {
+    const error = reduceError(e);
+    const body = JSON.stringify(error);
+    const headers = {
+      "Content-Type": "application/json",
+      "MF-Experimental-Error-Stack": "true"
+    };
+    const encoded = encodeURIComponent(body);
+    if (encoded.length <= 8192) {
+      headers["MF-Experimental-Error-Stack-Payload"] = encoded;
+    }
+    return new Response(body, { status: 500, headers });
+  }
+}, "jsonError");
+var middleware_miniflare3_json_error_default = jsonError;
+
+// .wrangler/tmp/bundle-3jtHXk/middleware-insertion-facade.js
+var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
+  middleware_ensure_req_body_drained_default,
+  middleware_miniflare3_json_error_default
+];
+var middleware_insertion_facade_default = worker_default;
+
+// ../../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/middleware/common.ts
+var __facade_middleware__ = [];
+function __facade_register__(...args) {
+  __facade_middleware__.push(...args.flat());
+}
+__name(__facade_register__, "__facade_register__");
+function __facade_invokeChain__(request, env, ctx, dispatch, middlewareChain) {
+  const [head, ...tail] = middlewareChain;
+  const middlewareCtx = {
+    dispatch,
+    next(newRequest, newEnv) {
+      return __facade_invokeChain__(newRequest, newEnv, ctx, dispatch, tail);
+    }
+  };
+  return head(request, env, ctx, middlewareCtx);
+}
+__name(__facade_invokeChain__, "__facade_invokeChain__");
+function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
+  return __facade_invokeChain__(request, env, ctx, dispatch, [
+    ...__facade_middleware__,
+    finalMiddleware
+  ]);
+}
+__name(__facade_invoke__, "__facade_invoke__");
+
+// .wrangler/tmp/bundle-3jtHXk/middleware-loader.entry.ts
+var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
+  constructor(scheduledTime, cron, noRetry) {
+    this.scheduledTime = scheduledTime;
+    this.cron = cron;
+    this.#noRetry = noRetry;
+  }
+  scheduledTime;
+  cron;
+  static {
+    __name(this, "__Facade_ScheduledController__");
+  }
+  #noRetry;
+  noRetry() {
+    if (!(this instanceof ___Facade_ScheduledController__)) {
+      throw new TypeError("Illegal invocation");
+    }
+    this.#noRetry();
+  }
+};
+function wrapExportedHandler(worker) {
+  if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
+    return worker;
+  }
+  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
+    __facade_register__(middleware);
+  }
+  const fetchDispatcher = /* @__PURE__ */ __name(function(request, env, ctx) {
+    if (worker.fetch === void 0) {
+      throw new Error("Handler does not export a fetch() function.");
+    }
+    return worker.fetch(request, env, ctx);
+  }, "fetchDispatcher");
+  return {
+    ...worker,
+    fetch(request, env, ctx) {
+      const dispatcher = /* @__PURE__ */ __name(function(type, init) {
+        if (type === "scheduled" && worker.scheduled !== void 0) {
+          const controller = new __Facade_ScheduledController__(
+            Date.now(),
+            init.cron ?? "",
+            () => {
+            }
+          );
+          return worker.scheduled(controller, env, ctx);
+        }
+      }, "dispatcher");
+      return __facade_invoke__(request, env, ctx, dispatcher, fetchDispatcher);
+    }
+  };
+}
+__name(wrapExportedHandler, "wrapExportedHandler");
+function wrapWorkerEntrypoint(klass) {
+  if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
+    return klass;
+  }
+  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
+    __facade_register__(middleware);
+  }
+  return class extends klass {
+    #fetchDispatcher = /* @__PURE__ */ __name((request, env, ctx) => {
+      this.env = env;
+      this.ctx = ctx;
+      if (super.fetch === void 0) {
+        throw new Error("Entrypoint class does not define a fetch() function.");
+      }
+      return super.fetch(request);
+    }, "#fetchDispatcher");
+    #dispatcher = /* @__PURE__ */ __name((type, init) => {
+      if (type === "scheduled" && super.scheduled !== void 0) {
+        const controller = new __Facade_ScheduledController__(
+          Date.now(),
+          init.cron ?? "",
+          () => {
+          }
+        );
+        return super.scheduled(controller);
+      }
+    }, "#dispatcher");
+    fetch(request) {
+      return __facade_invoke__(
+        request,
+        this.env,
+        this.ctx,
+        this.#dispatcher,
+        this.#fetchDispatcher
+      );
+    }
+  };
+}
+__name(wrapWorkerEntrypoint, "wrapWorkerEntrypoint");
+var WRAPPED_ENTRY;
+if (typeof middleware_insertion_facade_default === "object") {
+  WRAPPED_ENTRY = wrapExportedHandler(middleware_insertion_facade_default);
+} else if (typeof middleware_insertion_facade_default === "function") {
+  WRAPPED_ENTRY = wrapWorkerEntrypoint(middleware_insertion_facade_default);
+}
+var middleware_loader_entry_default = WRAPPED_ENTRY;
 export {
-  worker_default as default
+  __INTERNAL_WRANGLER_MIDDLEWARE__,
+  middleware_loader_entry_default as default
 };
 //# sourceMappingURL=worker.js.map

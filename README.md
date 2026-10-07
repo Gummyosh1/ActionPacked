@@ -4,7 +4,7 @@ Custom month calendar with selected-day event details, Eastern time, recurring e
 
 ## Google Calendar
 
-The example calendar from the supplied link is configured: connorlafferty0@gmail.com. Its public iCalendar feed was verified to return valid event data. No Google API key is needed. The server fetches only the public feed for the configured calendar; it never uses a secret/private calendar URL.
+The Action Packed calendar is configured: 6ec8ba2cf2b01abd89647b5f89771cc44a278d3ff919e1ccd08ca9db2d01d9e7@group.calendar.google.com. No Google API key is needed. The server fetches only the public feed for the configured calendar; it never uses a secret/private calendar URL.
 
 To switch to the store:
 1. Create a dedicated customer-facing calendar owned by the store.
